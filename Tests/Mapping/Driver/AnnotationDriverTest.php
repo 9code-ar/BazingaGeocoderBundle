@@ -1,8 +1,8 @@
 <?php
 
-namespace Bazinga\Bundle\GeocoderBundle\Tests\Mapping\Driver;
+namespace _9Code\GeocoderBundle\Tests\Mapping\Driver;
 
-use Bazinga\Bundle\GeocoderBundle\Mapping\Driver\AnnotationDriver;
+use _9Code\GeocoderBundle\Mapping\Driver\AnnotationDriver;
 use Doctrine\Common\Annotations\AnnotationRegistry;
 use Doctrine\Common\Annotations\Reader;
 use Doctrine\Common\Annotations\SimpleAnnotationReader;
@@ -27,7 +27,7 @@ class AnnotationDriverTest extends \PHPUnit_Framework_TestCase
         AnnotationRegistry::registerLoader('class_exists');
 
         $this->reader = new SimpleAnnotationReader();
-        $this->reader->addNamespace('Bazinga\Bundle\GeocoderBundle\Mapping\Annotations');
+        $this->reader->addNamespace('_9Code\GeocoderBundle\Mapping\Annotations');
 
         $this->driver = new AnnotationDriver($this->reader);
     }
@@ -43,7 +43,7 @@ class AnnotationDriverTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException Bazinga\Bundle\GeocoderBundle\Mapping\Exception\MappingException
+     * @expectedException _9Code\GeocoderBundle\Mapping\Exception\MappingException
      */
     public function testLoadMetadataFromWrongObject()
     {

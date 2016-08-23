@@ -1,8 +1,8 @@
-BazingaGeocoderBundle
+GeocoderBundle
 =====================
 
 [![Build
-Status](https://secure.travis-ci.org/geocoder-php/BazingaGeocoderBundle.png)](http://travis-ci.org/geocoder-php/BazingaGeocoderBundle)
+Status](https://secure.travis-ci.org/geocoder-php/GeocoderBundle.png)](http://travis-ci.org/geocoder-php/GeocoderBundle)
 [![Total
 Downloads](https://poser.pugx.org/willdurand/geocoder-bundle/downloads.png)](https://packagist.org/packages/willdurand/geocoder-bundle)
 [![Latest Stable
@@ -24,14 +24,14 @@ For documentation, see:
     Resources/doc/
 
 [Read the
-documentation](https://github.com/geocoder-php/BazingaGeocoderBundle/blob/master/Resources/doc/index.md)
+documentation](https://github.com/geocoder-php/GeocoderBundle/blob/master/Resources/doc/index.md)
 
 
 Contributing
 ------------
 
 See
-[CONTRIBUTING](https://github.com/geocoder-php/BazingaGeocoderBundle/blob/master/CONTRIBUTING.md)
+[CONTRIBUTING](https://github.com/geocoder-php/GeocoderBundle/blob/master/CONTRIBUTING.md)
 file.
 
 
@@ -39,7 +39,7 @@ Credits
 -------
 
 * William Durand
-* [All contributors](https://github.com/geocoder-php/BazingaGeocoderBundle/contributors)
+* [All contributors](https://github.com/geocoder-php/GeocoderBundle/contributors)
 
 
 Contributor Code of Conduct

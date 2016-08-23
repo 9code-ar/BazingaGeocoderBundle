@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the BazingaGeocoderBundle package.
+ * This file is part of the GeocoderBundle package.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @license    MIT License
  */
-namespace Bazinga\Bundle\GeocoderBundle\DependencyInjection\Compiler;
+namespace _9Code\GeocoderBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -24,29 +24,29 @@ class AddProvidersPass implements CompilerPassInterface
     protected $container;
 
     /**
-     * Get all providers based on their tag (`bazinga_geocoder.provider`) and
+     * Get all providers based on their tag (`geocoder_bundle.provider`) and
      * register them.
      *
      * @param ContainerBuilder $container
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('bazinga_geocoder.geocoder')) {
+        if (!$container->hasDefinition('geocoder_bundle.geocoder')) {
             return;
         }
 
         $providers = array();
-        foreach ($container->findTaggedServiceIds('bazinga_geocoder.provider') as $providerId => $attributes) {
+        foreach ($container->findTaggedServiceIds('geocoder_bundle.provider') as $providerId => $attributes) {
             $providers[] = new Reference($providerId);
         }
 
-        $geocoderDefinition = $container->getDefinition('bazinga_geocoder.geocoder');
+        $geocoderDefinition = $container->getDefinition('geocoder_bundle.geocoder');
         $geocoderDefinition->addMethodCall('registerProviders', array($providers));
 
-        if ($container->hasParameter('bazinga_geocoder.default_provider')) {
+        if ($container->hasParameter('geocoder_bundle.default_provider')) {
             $geocoderDefinition->addMethodCall(
                 'using',
-                array($container->getParameter('bazinga_geocoder.default_provider'))
+                array($container->getParameter('geocoder_bundle.default_provider'))
             );
         }
     }

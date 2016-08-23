@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the BazingaGeocoderBundle package.
+ * This file is part of the GeocoderBundle package.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @license    MIT License
  */
-namespace Bazinga\Bundle\GeocoderBundle\Command;
+namespace _9Code\GeocoderBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -47,7 +47,7 @@ HELP
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         /** @var $geocoder \Geocoder\Geocoder */
-        $geocoder = $this->getContainer()->get('bazinga_geocoder.geocoder');
+        $geocoder = $this->getContainer()->get('geocoder_bundle.geocoder');
 
         if ($input->getOption('provider')) {
             $geocoder->using($input->getOption('provider'));

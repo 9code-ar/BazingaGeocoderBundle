@@ -1,7 +1,7 @@
-BazingaGeocoderBundle
+GeocoderBundle
 =====================
 
-Integration of the [**Geocoder**](http://github.com/geocoder-php/Geocoder)
+Integration of the [**Geocoder**](http://github.com/9code-ar/Geocoder)
 library into Symfony2.
 
 * [Installation](#installation)
@@ -43,7 +43,7 @@ public function registerBundles()
 {
     return array(
         // ...
-        new Bazinga\Bundle\GeocoderBundle\BazingaGeocoderBundle(),
+        new _9Code\GeocoderBundle\GeocoderBundle(),
     );
 }
 ```
@@ -52,13 +52,13 @@ Enable the bundle's configuration in `app/config/config.yml`:
 
 ``` yaml
 # app/config/config.yml
-bazinga_geocoder: ~
+geocoder_bundle: ~
 ```
 
 Usage
 -----
 
-This bundle registers a `bazinga_geocoder.geocoder` service which is an instance
+This bundle registers a `geocoder_bundle.geocoder` service which is an instance
 of `Geocoder`. You'll be able to do whatever you want with it but be sure to
 configure at least **one provider** first.
 
@@ -89,7 +89,7 @@ information in your development environment, for instance:
     {
         // Retrieve information from the current user (by its IP address)
         $result = $this->container
-            ->get('bazinga_geocoder.geocoder')
+            ->get('geocoder_bundle.geocoder')
             ->using('google_maps')
             ->geocode($request->server->get('REMOTE_ADDR'));
 
@@ -114,7 +114,7 @@ an easy way to fake this behavior by using a `fake_ip` configuration.
 
 ``` yaml
 # app/config/config_dev.yml
-bazinga_geocoder:
+geocoder_bundle:
     fake_ip:    123.345.643.133
 ```
 
@@ -127,7 +127,7 @@ listeners, You can set up different fake ip listener priority.
 
 ``` yaml
 # app/config/config_dev.yml
-bazinga_geocoder:
+geocoder_bundle:
     fake_ip:
         ip: 123.345.643.133
         priority: 128
@@ -136,18 +136,18 @@ bazinga_geocoder:
 ### Registering Your Own Providers
 
 If you want to use your own provider in your application, create a service,
-and tag it as `bazinga_geocoder.provider`:
+and tag it as `geocoder_bundle.provider`:
 
 ```xml
 <service id="acme_demo.geocoder.my_provider" class="Acme\Demo\Geocoder\Provider\MyProvider">
-    <tag name="bazinga_geocoder.provider" />
+    <tag name="geocoder_bundle.provider" />
 </service>
 ```
 
 The bundle will automatically register your provider into the
-`bazinga_geocoder.geocoder` service.
+`geocoder_bundle.geocoder` service.
 
-**Note:** the `bazinga_geocoder.geocoder.adapter` service represents the configured
+**Note:** the `geocoder_bundle.geocoder.adapter` service represents the configured
 Geocoder's adapter. If your provider needs an HTTP adapter, you should inject this
 service into the service you have just created.
 
@@ -170,11 +170,11 @@ Here is an example:
 public function geocodeAction(Request $request)
 {
     $result = $this->container
-        ->get('bazinga_geocoder.geocoder')
+        ->get('geocoder_bundle.geocoder')
         ->geocode($request->server->get('REMOTE_ADDR'));
 
     $body = $this->container
-        ->get('bazinga_geocoder.dumper_manager')
+        ->get('geocoder_bundle.dumper_manager')
         ->get('geojson')
         ->dump($result);
 
@@ -185,14 +185,14 @@ public function geocodeAction(Request $request)
 }
 ```
 
-To register a new dumper, you must tag it with `bazinga_geocoder.dumper`.
+To register a new dumper, you must tag it with `geocoder_bundle.dumper`.
 The bundles will automatically register it.
 
 A little example:
 
 ```xml
 <service id="some.dumper" class="%some.dumper.class">
-    <tag name="bazinga_geocoder.dumper" alias="custom" />
+    <tag name="geocoder_bundle.dumper" alias="custom" />
 </service>
 ```
 
@@ -208,7 +208,7 @@ services:
     acme_cache_adapter:
         class: "Doctrine\\Common\\Cache\\ApcCache"
 
-bazinga_geocoder:
+geocoder_bundle:
     providers:
         cache:
             adapter:  acme_cache_adapter
@@ -232,7 +232,7 @@ services:
     guzzle_http_adapter:
         class: "Ivory\HttpAdapter\Guzzle6HttpAdapter"
 
-bazinga_geocoder:
+geocoder_bundle:
     adapter: guzzle_http_adapter
 ```
 
@@ -243,7 +243,7 @@ check number of queries executed by each provider, total execution time
 and geocoding results.
 
 ![Example
-Toolbar](https://raw.github.com/geocoder-php/BazingaGeocoderBundle/master/Resources/doc/toolbar.png)
+Toolbar](https://raw.github.com/9code-ar/GeocoderBundle/master/Resources/doc/toolbar.png)
 
 
 Reference Configuration
@@ -256,7 +256,7 @@ You'll find the reference configuration below:
 
 ``` yaml
 # app/config/config*.yml
-bazinga_geocoder:
+geocoder_bundle:
     fake_ip:
         enabled:              true
         ip:                   null

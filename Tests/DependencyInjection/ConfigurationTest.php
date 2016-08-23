@@ -1,8 +1,8 @@
 <?php
 
-namespace Bazinga\Bundle\GeocoderBundle\Tests\DependencyInjection;
+namespace _9Code\GeocoderBundle\Tests\DependencyInjection;
 
-use Bazinga\Bundle\GeocoderBundle\DependencyInjection\Configuration;
+use _9Code\GeocoderBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Yaml\Yaml;
 

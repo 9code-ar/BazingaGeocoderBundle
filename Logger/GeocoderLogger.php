@@ -1,17 +1,17 @@
 <?php
 
 /**
- * This file is part of the BazingaGeocoderBundle package.
+ * This file is part of the GeocoderBundle package.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @license    MIT License
  */
-namespace Bazinga\Bundle\GeocoderBundle\Logger;
+namespace _9Code\GeocoderBundle\Logger;
 
 use Psr\Log\LoggerInterface;
-use Geocoder\Model\AddressCollection;
-use Geocoder\Model\Address;
+use _9Code\Geocoder\Model\AddressCollection;
+use _9Code\Geocoder\Model\Address;
 
 /**
  * @author Michal Dabrowski <dabrowski@brillante.pl>

@@ -1,15 +1,15 @@
 <?php
 
 /**
- * This file is part of the BazingaGeocoderBundle package.
+ * This file is part of the GeocoderBundle package.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @license    MIT License
  */
-namespace Bazinga\Bundle\GeocoderBundle\DataCollector;
+namespace _9Code\GeocoderBundle\DataCollector;
 
-use Bazinga\Bundle\GeocoderBundle\Logger\GeocoderLogger;
+use _9Code\GeocoderBundle\Logger\GeocoderLogger;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

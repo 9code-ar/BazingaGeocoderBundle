@@ -1,20 +1,20 @@
 <?php
 
 /**
- * This file is part of the BazingaGeocoderBundle package.
+ * This file is part of the GeocoderBundle package.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @license    MIT License
  */
-namespace Bazinga\Bundle\GeocoderBundle\Tests\Command;
+namespace _9Code\GeocoderBundle\Tests\Command;
 
-use Bazinga\Bundle\GeocoderBundle\Command\GeocodeCommand;
-use Geocoder\Model\Address;
-use Geocoder\Model\AddressCollection;
-use Geocoder\Model\Bounds;
-use Geocoder\Model\Coordinates;
-use Geocoder\Model\Country;
+use _9Code\GeocoderBundle\Command\GeocodeCommand;
+use _9Code\Geocoder\Model\Address;
+use _9Code\Geocoder\Model\AddressCollection;
+use _9Code\Geocoder\Model\Bounds;
+use _9Code\Geocoder\Model\Coordinates;
+use _9Code\Geocoder\Model\Country;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 
@@ -41,7 +41,7 @@ class GeocodeCommandTest extends \PHPUnit_Framework_TestCase
         $container = $this->getMock('Symfony\\Component\\DependencyInjection\\Container');
         $container->expects($this->once())
             ->method('get')
-            ->with('bazinga_geocoder.geocoder')
+            ->with('geocoder_bundle.geocoder')
             ->will($this->returnValue($geocoder));
 
         $kernel = $this->getMockBuilder('Symfony\\Component\\HttpKernel\\Kernel')

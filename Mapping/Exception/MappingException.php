@@ -1,6 +1,6 @@
 <?php
 
-namespace Bazinga\Bundle\GeocoderBundle\Mapping\Exception;
+namespace _9Code\GeocoderBundle\Mapping\Exception;
 
 /**
  * @author Markus Bachmann <markus.bachmann@bachi.biz>

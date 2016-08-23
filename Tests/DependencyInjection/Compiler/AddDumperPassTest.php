@@ -1,8 +1,8 @@
 <?php
 
-namespace Bazinga\Bundle\GeocoderBundle\Tests\DependencyInjection\Compiler;
+namespace _9Code\GeocoderBundle\Tests\DependencyInjection\Compiler;
 
-use Bazinga\Bundle\GeocoderBundle\DependencyInjection\Compiler\AddDumperPass;
+use _9Code\GeocoderBundle\DependencyInjection\Compiler\AddDumperPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 
@@ -14,17 +14,17 @@ class AddDumperPassTest extends \PHPUnit_Framework_TestCase
     public function testProcess()
     {
         $builder = new ContainerBuilder();
-        $builder->setDefinition('bazinga_geocoder.dumper_manager', new Definition('Bazinga\Bundle\GeocoderBundle\DumperManager'));
+        $builder->setDefinition('geocoder_bundle.dumper_manager', new Definition('_9Code\GeocoderBundle\DumperManager'));
 
         $dumper = new Definition('Geocoder\Dumper\GeoJson');
-        $dumper->addTag('bazinga_geocoder.dumper', array('alias' => 'geojson'));
+        $dumper->addTag('geocoder_bundle.dumper', array('alias' => 'geojson'));
 
-        $builder->setDefinition('bazinga_geocoder.dumper.geojson', $dumper);
+        $builder->setDefinition('geocoder_bundle.dumper.geojson', $dumper);
 
         $compiler = new AddDumperPass();
         $compiler->process($builder);
 
-        $manager = $builder->get('bazinga_geocoder.dumper_manager');
+        $manager = $builder->get('geocoder_bundle.dumper_manager');
 
         $this->assertTrue($manager->has('geojson'));
     }

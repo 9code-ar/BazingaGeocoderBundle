@@ -1,8 +1,8 @@
 <?php
 
-namespace Bazinga\Bundle\GeocoderBundle\Tests\Provider;
+namespace _9Code\GeocoderBundle\Tests\Provider;
 
-use Bazinga\Bundle\GeocoderBundle\Provider\Cache;
+use _9Code\GeocoderBundle\Provider\Cache;
 use Doctrine\Common\Cache\ArrayCache;
 
 /**

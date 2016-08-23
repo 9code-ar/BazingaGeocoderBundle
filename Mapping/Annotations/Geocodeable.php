@@ -1,6 +1,6 @@
 <?php
 
-namespace Bazinga\Bundle\GeocoderBundle\Mapping\Annotations;
+namespace _9Code\GeocoderBundle\Mapping\Annotations;
 
 /**
  * @author Markus Bachmann <markus.bachmann@bachi.biz>

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the BazingaGeocoderBundle package.
+ * This file is part of the GeocoderBundle package.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @license    MIT License
  */
-namespace Bazinga\Bundle\GeocoderBundle\DependencyInjection\Compiler;
+namespace _9Code\GeocoderBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -23,12 +23,12 @@ class LoggablePass implements CompilerPassInterface
      */
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('bazinga_geocoder.geocoder')) {
+        if (!$container->hasDefinition('geocoder_bundle.geocoder')) {
             return;
         }
 
-        $definition = $container->getDefinition('bazinga_geocoder.geocoder');
-        $definition->setClass($container->getParameter('bazinga_geocoder.geocoder.loggable_class'));
-        $definition->addMethodCall('setLogger', array(new Reference('bazinga_geocoder.logger')));
+        $definition = $container->getDefinition('geocoder_bundle.geocoder');
+        $definition->setClass($container->getParameter('geocoder_bundle.geocoder.loggable_class'));
+        $definition->addMethodCall('setLogger', array(new Reference('geocoder_bundle.logger')));
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Bazinga\Bundle\GeocoderBundle\Tests;
+namespace _9Code\GeocoderBundle\Tests;
 
-use Bazinga\Bundle\GeocoderBundle\DumperManager;
+use _9Code\GeocoderBundle\DumperManager;
 
 /**
  * @author Markus Bachmann <markus.bachmann@bachi.biz>

@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the BazingaGeocoderBundle package.
+ * This file is part of the GeocoderBundle package.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @license    MIT License
  */
-namespace Bazinga\Bundle\GeocoderBundle\DependencyInjection;
+namespace _9Code\GeocoderBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -25,7 +25,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('bazinga_geocoder');
+        $rootNode = $treeBuilder->root('geocoder_bundle');
 
         $rootNode
             ->children()
@@ -46,7 +46,7 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('priority')->defaultValue(0)->end()
                 ->end()
             ->end()
-            ->scalarNode('adapter')->defaultValue('bazinga_geocoder.geocoder.default_adapter')->end()
+            ->scalarNode('adapter')->defaultValue('geocoder_bundle.geocoder.default_adapter')->end()
             ->arrayNode('providers')
                 ->children()
                 ->arrayNode('bing_maps')

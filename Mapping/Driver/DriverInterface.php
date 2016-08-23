@@ -3,7 +3,7 @@
 /**
  * @author Markus Bachmann <markus.bachmann@bachi.biz>
  */
-namespace Bazinga\Bundle\GeocoderBundle\Mapping\Driver;
+namespace _9Code\GeocoderBundle\Mapping\Driver;
 
 interface DriverInterface
 {

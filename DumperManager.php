@@ -1,15 +1,15 @@
 <?php
 
 /**
- * This file is part of the BazingaGeocoderBundle package.
+ * This file is part of the GeocoderBundle package.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @license    MIT License
  */
-namespace Bazinga\Bundle\GeocoderBundle;
+namespace _9Code\GeocoderBundle;
 
-use Geocoder\Dumper\Dumper;
+use _9Code\Geocoder\Dumper\Dumper;
 
 /**
  * @author Markus Bachmann <markus.bachmann@bachi.biz>

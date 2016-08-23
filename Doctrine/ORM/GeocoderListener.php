@@ -1,12 +1,12 @@
 <?php
 
-namespace Bazinga\Bundle\GeocoderBundle\Doctrine\ORM;
+namespace _9Code\GeocoderBundle\Doctrine\ORM;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Events;
 use Doctrine\ORM\Event\OnFlushEventArgs;
-use Bazinga\Bundle\GeocoderBundle\Mapping\Driver\DriverInterface;
-use Geocoder\Geocoder;
+use _9Code\GeocoderBundle\Mapping\Driver\DriverInterface;
+use _9Code\Geocoder\Geocoder;
 
 /**
  * @author Markus Bachmann <markus.bachmann@bachi.biz>
