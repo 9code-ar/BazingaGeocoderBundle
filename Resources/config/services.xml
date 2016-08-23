@@ -14,6 +14,7 @@
         <parameter key="geocoder_bundle.geocoder.provider.host_ip.class">_9Code\Geocoder\Provider\HostIp</parameter>
         <parameter key="geocoder_bundle.geocoder.provider.ip_info_db.class">_9Code\Geocoder\Provider\IpInfoDb</parameter>
         <parameter key="geocoder_bundle.geocoder.provider.yahoo.class">_9Code\Geocoder\Provider\Yahoo</parameter>
+        <parameter key="geocoder_bundle.geocoder.provider.nominatim.class">_9Code\Geocoder\Provider\Nominatim</parameter>
         <parameter key="geocoder_bundle.geocoder.provider.openstreetmap.class">_9Code\Geocoder\Provider\OpenStreetMap</parameter>
         <parameter key="geocoder_bundle.geocoder.provider.geoip.class">_9Code\Geocoder\Provider\Geoip</parameter>
         <parameter key="geocoder_bundle.geocoder.provider.mapquest.class">_9Code\Geocoder\Provider\MapQuest</parameter>
