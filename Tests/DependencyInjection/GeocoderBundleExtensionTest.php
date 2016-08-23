@@ -1,27 +1,27 @@
 <?php
 
-namespace Bazinga\Bundle\GeocoderBundle\Tests\DependencyInjection;
+namespace _9Code\GeocoderBundle\Tests\DependencyInjection;
 
 use Symfony\Component\Yaml\Yaml;
 use Doctrine\Common\Cache\ArrayCache;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Bazinga\Bundle\GeocoderBundle\DependencyInjection\BazingaGeocoderExtension;
-use Bazinga\Bundle\GeocoderBundle\DependencyInjection\Compiler\AddDumperPass;
-use Bazinga\Bundle\GeocoderBundle\DependencyInjection\Compiler\AddProvidersPass;
-use Bazinga\Bundle\GeocoderBundle\DependencyInjection\Compiler\LoggablePass;
+use _9Code\GeocoderBundle\DependencyInjection\GeocoderBundleExtension;
+use _9Code\GeocoderBundle\DependencyInjection\Compiler\AddDumperPass;
+use _9Code\GeocoderBundle\DependencyInjection\Compiler\AddProvidersPass;
+use _9Code\GeocoderBundle\DependencyInjection\Compiler\LoggablePass;
 
 /**
  * @author Markus Bachmann <markus.bachmann@bachi.biz>
  */
-class BazingaGeocoderExtensionTest extends \PHPUnit_Framework_TestCase
+class GeocoderBundleExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function testLoad()
     {
         $configs = Yaml::parse(file_get_contents(__DIR__.'/Fixtures/config.yml'));
-        unset($configs['bazinga_geocoder']['default_provider']);
+        unset($configs['geocoder_bundle']['default_provider']);
 
         $container = new ContainerBuilder();
-        $extension = new BazingaGeocoderExtension();
+        $extension = new GeocoderBundleExtension();
 
         $container->setParameter('fixtures_dir', __DIR__.'/Fixtures');
 
@@ -35,26 +35,26 @@ class BazingaGeocoderExtensionTest extends \PHPUnit_Framework_TestCase
         $container->compile();
 
         $this->assertInstanceOf(
-            'Bazinga\Bundle\GeocoderBundle\EventListener\FakeRequestListener',
-            $container->get('bazinga_geocoder.event_listener.fake_request')
+            '_9Code\GeocoderBundle\EventListener\FakeRequestListener',
+            $container->get('geocoder_bundle.event_listener.fake_request')
         );
         $this->assertNotNull(
-            $container->get('bazinga_geocoder.event_listener.fake_request')->getFakeIp()
+            $container->get('geocoder_bundle.event_listener.fake_request')->getFakeIp()
         );
 
-        $dumperManager = $container->get('bazinga_geocoder.dumper_manager');
+        $dumperManager = $container->get('geocoder_bundle.dumper_manager');
 
         foreach (array('geojson', 'gpx', 'kmp', 'wkb', 'wkt') as $name) {
             $this->assertTrue($dumperManager->has($name));
         }
 
-        $this->assertFalse($container->hasParameter('bazinga_geocoder.default_provider'));
+        $this->assertFalse($container->hasParameter('geocoder_bundle.default_provider'));
 
-        $geocoder = $container->get('bazinga_geocoder.geocoder');
+        $geocoder = $container->get('geocoder_bundle.geocoder');
         $providers = $geocoder->getProviders();
         foreach (array(
             'bing_maps' => 'Geocoder\\Provider\\BingMaps',
-            'cache' => 'Bazinga\\Bundle\\GeocoderBundle\\Provider\\Cache',
+            'cache' => '_9Code\\GeocoderBundle\\Provider\\Cache',
             'ip_info_db' => 'Geocoder\\Provider\\IpInfoDb',
             'google_maps' => 'Geocoder\\Provider\\GoogleMaps',
             'google_maps_business' => 'Geocoder\\Provider\\GoogleMapsBusiness',
@@ -78,7 +78,7 @@ class BazingaGeocoderExtensionTest extends \PHPUnit_Framework_TestCase
     {
         $configs = Yaml::parse(file_get_contents(__DIR__.'/Fixtures/config.yml'));
         $container = new ContainerBuilder();
-        $extension = new BazingaGeocoderExtension();
+        $extension = new GeocoderBundleExtension();
 
         $container->setParameter('fixtures_dir', __DIR__.'/Fixtures');
 
@@ -89,14 +89,14 @@ class BazingaGeocoderExtensionTest extends \PHPUnit_Framework_TestCase
 
         $container->compile();
 
-        $this->assertEquals('bing_maps', $container->getParameter('bazinga_geocoder.default_provider'));
+        $this->assertEquals('bing_maps', $container->getParameter('geocoder_bundle.default_provider'));
     }
 
     public function testLoadingFakeIpOldWay()
     {
         $configs = Yaml::parse(file_get_contents(__DIR__.'/Fixtures/old_fake_ip.yml'));
         $container = new ContainerBuilder();
-        $extension = new BazingaGeocoderExtension();
+        $extension = new GeocoderBundleExtension();
 
         $container->setParameter('fixtures_dir', __DIR__.'/Fixtures');
 
@@ -109,12 +109,12 @@ class BazingaGeocoderExtensionTest extends \PHPUnit_Framework_TestCase
         $container->compile();
 
         $this->assertInstanceOf(
-            'Bazinga\Bundle\GeocoderBundle\EventListener\FakeRequestListener',
-            $container->get('bazinga_geocoder.event_listener.fake_request')
+            '_9Code\GeocoderBundle\EventListener\FakeRequestListener',
+            $container->get('geocoder_bundle.event_listener.fake_request')
         );
 
         $this->assertNotNull(
-            $container->get('bazinga_geocoder.event_listener.fake_request')->getFakeIp()
+            $container->get('geocoder_bundle.event_listener.fake_request')->getFakeIp()
         );
     }
 }

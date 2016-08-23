@@ -1,18 +1,25 @@
+WARNING!!!
+==========
+
+This is a fork of https://github.com/geocoder-php/BazingaGeocoderBundle project, and it is our first fork experience.
+We do not intend to publish a stable version or to provide support of this code
+
+
 GeocoderBundle
-=====================
+==============
 
 [![Build
-Status](https://secure.travis-ci.org/geocoder-php/GeocoderBundle.png)](http://travis-ci.org/geocoder-php/GeocoderBundle)
+Status](https://secure.travis-ci.org/9code-ar/GeocoderBundle.png)](http://travis-ci.org/9code-ar/GeocoderBundle)
 [![Total
 Downloads](https://poser.pugx.org/willdurand/geocoder-bundle/downloads.png)](https://packagist.org/packages/willdurand/geocoder-bundle)
 [![Latest Stable
 Version](https://poser.pugx.org/willdurand/geocoder-bundle/v/stable.png)](https://packagist.org/packages/willdurand/geocoder-bundle)
 
-Integration of the [**Geocoder**](http://github.com/geocoder-php/Geocoder) library
+Integration of the [**Geocoder**](http://github.com/9code-ar/Geocoder) library
 into Symfony2.
 
 **Important:** this bundle is developed in sync with [Geocoder's
-repository](http://github.com/geocoder-php/Geocoder). If you are using Geocoder
+repository](http://github.com/9code-ar/Geocoder). If you are using Geocoder
 `1.x`, you need to use the `~1.5` releases of the bundle (or lower).
 
 
@@ -24,14 +31,14 @@ For documentation, see:
     Resources/doc/
 
 [Read the
-documentation](https://github.com/geocoder-php/GeocoderBundle/blob/master/Resources/doc/index.md)
+documentation](https://github.com/9code-ar/GeocoderBundle/blob/master/Resources/doc/index.md)
 
 
 Contributing
 ------------
 
 See
-[CONTRIBUTING](https://github.com/geocoder-php/GeocoderBundle/blob/master/CONTRIBUTING.md)
+[CONTRIBUTING](https://github.com/9code-ar/GeocoderBundle/blob/master/CONTRIBUTING.md)
 file.
 
 
@@ -39,7 +46,7 @@ Credits
 -------
 
 * William Durand
-* [All contributors](https://github.com/geocoder-php/GeocoderBundle/contributors)
+* [All contributors](https://github.com/9code-ar/GeocoderBundle/contributors)
 
 
 Contributor Code of Conduct

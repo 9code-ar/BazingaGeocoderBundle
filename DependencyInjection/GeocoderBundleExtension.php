@@ -1,13 +1,13 @@
 <?php
 
 /**
- * This file is part of the BazingaGeocoderBundle package.
+ * This file is part of the GeocoderBundle package.
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @license    MIT License
  */
-namespace Bazinga\Bundle\GeocoderBundle\DependencyInjection;
+namespace _9Code\GeocoderBundle\DependencyInjection;
 
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -20,7 +20,7 @@ use Symfony\Component\Config\Definition\Processor;
 /**
  * William Durand <william.durand1@gmail.com>.
  */
-class BazingaGeocoderExtension extends Extension
+class GeocoderBundleExtension extends Extension
 {
     protected $container;
 
@@ -36,11 +36,11 @@ class BazingaGeocoderExtension extends Extension
         $loader->load('services.xml');
 
         if ($config['default_provider']) {
-            $container->setParameter('bazinga_geocoder.default_provider', $config['default_provider']);
+            $container->setParameter('geocoder_bundle.default_provider', $config['default_provider']);
         }
 
         if (!empty($config['fake_ip']) && true === $config['fake_ip']['enabled']) {
-            $definition = $container->getDefinition('bazinga_geocoder.event_listener.fake_request');
+            $definition = $container->getDefinition('geocoder_bundle.event_listener.fake_request');
             $definition->replaceArgument(0, $config['fake_ip']['ip']);
 
             $tag = current($definition->getTag('kernel.event_listener'));
@@ -48,10 +48,10 @@ class BazingaGeocoderExtension extends Extension
             $tags = array('kernel.event_listener' => array($tag));
             $definition->setTags($tags);
         } else {
-            $container->removeDefinition('bazinga_geocoder.event_listener.fake_request');
+            $container->removeDefinition('geocoder_bundle.event_listener.fake_request');
         }
 
-        $container->setAlias('bazinga_geocoder.geocoder.adapter', $config['adapter']);
+        $container->setAlias('geocoder_bundle.geocoder.adapter', $config['adapter']);
 
         if (isset($config['providers']['free_geo_ip'])) {
             $this->addProvider('free_geo_ip');
@@ -154,7 +154,7 @@ class BazingaGeocoderExtension extends Extension
             $maxmindBinaryParams = $config['providers']['maxmind_binary'];
 
             $provider = new Definition(
-                '%bazinga_geocoder.geocoder.provider.maxmind_binary.class%',
+                '%geocoder_bundle.geocoder.provider.maxmind_binary.class%',
                 array(
                     $maxmindBinaryParams['binary_file'],
                     $maxmindBinaryParams['open_flag'],
@@ -163,9 +163,9 @@ class BazingaGeocoderExtension extends Extension
 
             $provider
                 ->setPublic(false)
-                ->addTag('bazinga_geocoder.provider');
+                ->addTag('geocoder_bundle.provider');
 
-            $container->setDefinition('bazinga_geocoder.provider.maxmind_binary', $provider);
+            $container->setDefinition('geocoder_bundle.provider.maxmind_binary', $provider);
         }
 
         if (isset($config['providers']['opencage'])) {
@@ -181,10 +181,10 @@ class BazingaGeocoderExtension extends Extension
         if (isset($config['providers']['cache'])) {
             $params = $config['providers']['cache'];
             $cache = new Reference($params['adapter']);
-            $fallback = new Reference('bazinga_geocoder.provider.'.$params['provider']);
+            $fallback = new Reference('geocoder_bundle.provider.'.$params['provider']);
 
             $provider = new Definition(
-                '%bazinga_geocoder.geocoder.provider.cache.class%',
+                '%geocoder_bundle.geocoder.provider.cache.class%',
                 array($cache, $fallback, $params['lifetime'])
             );
 
@@ -194,27 +194,27 @@ class BazingaGeocoderExtension extends Extension
 
             $provider
                 ->setPublic(false)
-                ->addTag('bazinga_geocoder.provider');
+                ->addTag('geocoder_bundle.provider');
 
-            $container->setDefinition('bazinga_geocoder.provider.cache', $provider);
+            $container->setDefinition('geocoder_bundle.provider.cache', $provider);
         }
 
         if (isset($config['providers']['chain'])) {
             $chainProvider = new Definition(
-                '%bazinga_geocoder.geocoder.provider.chain.class%'
+                '%geocoder_bundle.geocoder.provider.chain.class%'
             );
 
-            $this->container->setDefinition('bazinga_geocoder.provider.chain', $chainProvider);
+            $this->container->setDefinition('geocoder_bundle.provider.chain', $chainProvider);
 
             $chainProvider
                 ->setPublic(false)
-                ->addTag('bazinga_geocoder.provider');
+                ->addTag('geocoder_bundle.provider');
 
             if (isset($config['providers']['chain']['providers'])) {
                 foreach ($config['providers']['chain']['providers'] as $name) {
-                    if ($this->container->hasDefinition('bazinga_geocoder.provider.'.$name)) {
+                    if ($this->container->hasDefinition('geocoder_bundle.provider.'.$name)) {
                         $chainProvider->addMethodCall('add', array(
-                            $this->container->getDefinition('bazinga_geocoder.provider.'.$name),
+                            $this->container->getDefinition('geocoder_bundle.provider.'.$name),
                         ));
                     } else {
                         $chainProvider->addMethodCall('add', array(new Reference($name)));
@@ -227,17 +227,17 @@ class BazingaGeocoderExtension extends Extension
     protected function addProvider($name, array $arguments = array())
     {
         $provider = new Definition(
-            '%bazinga_geocoder.geocoder.provider.'.$name.'.class%',
+            '%geocoder_bundle.geocoder.provider.'.$name.'.class%',
             array_merge(
-                array(new Reference('bazinga_geocoder.geocoder.adapter')),
+                array(new Reference('geocoder_bundle.geocoder.adapter')),
                 $arguments
             )
         );
 
         $provider
             ->setPublic(false)
-            ->addTag('bazinga_geocoder.provider');
+            ->addTag('geocoder_bundle.provider');
 
-        $this->container->setDefinition('bazinga_geocoder.provider.'.$name, $provider);
+        $this->container->setDefinition('geocoder_bundle.provider.'.$name, $provider);
     }
 }
