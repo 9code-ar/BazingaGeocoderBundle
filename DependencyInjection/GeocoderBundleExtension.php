@@ -101,6 +101,15 @@ class GeocoderBundleExtension extends Extension
             ));
         }
 
+        if (isset($config['providers']['nominatim'])) {
+            $nominatimParams = $config['providers']['nominatim'];
+
+            $this->addProvider('nominatim', array(
+                $nominatimParams['root_url'],
+                $nominatimParams['locale'],
+            ));
+        }
+
         if (isset($config['providers']['openstreetmap'])) {
             $openstreetMapsParams = $config['providers']['openstreetmap'];
 
